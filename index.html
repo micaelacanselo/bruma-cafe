@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bruma Café · Café de especialidad en Palermo Soho</title>
+  <meta name="description" content="Cafetería de especialidad en Gorriti 4821, Palermo Soho. Café del Huila tostado en Buenos Aires, mesas compartidas y luz de ventana. Proyecto de portfolio con datos ficticios.">
+  <meta property="og:title" content="Bruma Café">
+  <meta property="og:description" content="Café de especialidad en Palermo Soho. Proyecto de portfolio con datos ficticios.">
+  <meta property="og:image" content="assets/img/poster.webp">
+  <meta name="theme-color" content="#f1e9dd">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="bruma.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<a class="saltar" href="#carta">Saltar al contenido</a>
+
+<header class="topo">
+  <a href="#inicio" class="marca" aria-label="Bruma Café, inicio">
+    <span class="marca-texto">Bruma Café</span>
+  </a>
+  <nav class="menu" aria-label="Secciones">
+    <a href="#carta">Carta</a>
+    <a href="#origen">Origen</a>
+    <a href="#lugar">El lugar</a>
+    <a href="#horarios">Horarios</a>
+    <a href="#ubicacion" class="menu-cta">Cómo llegar</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- APERTURA: el video avanza con el scroll. Cada texto es un papel distinto del mostrador. -->
+  <section id="inicio" class="cine" data-abertura="video" style="--altura: 440vh" aria-label="Presentación">
+    <div class="cine-palco">
+      <img class="arte-poster" src="assets/img/poster.webp" alt="Una taza de cerámica crema recibe leche que dibuja una rosetta sobre el espresso" width="2400" height="1340">
+      <canvas class="cine-canvas" aria-hidden="true"></canvas>
+      <svg class="escena" viewBox="0 0 1600 900" preserveAspectRatio="xMaxYMid slice" role="img" aria-labelledby="escena-titulo">
+        <title id="escena-titulo">Ilustración: un barista muele el café, saca un espresso, le agrega leche con una rosetta y te acerca la taza</title>
+      
+        <!-- Pared, ventana y estante -->
+        <rect width="1600" height="900" fill="#f1e9dd"/>
+        <rect x="300" y="90" width="330" height="480" fill="#f8f2e9"/>
+        <rect x="459" y="90" width="12" height="480" fill="#e7d9c6"/>
+        <rect x="300" y="324" width="330" height="12" fill="#e7d9c6"/>
+        <rect x="900" y="250" width="680" height="14" fill="#9a6a45"/>
+        <g fill="#c9a47a">
+          <path d="M950 170 h58 v80 h-58z M950 170 l8 -14 h42 l8 14z"/>
+          <path d="M1026 180 h52 v70 h-52z M1026 180 l7 -12 h38 l7 12z"/>
+          <path d="M1096 165 h56 v85 h-56z M1096 165 l8 -14 h40 l8 14z"/>
+        </g>
+        <g fill="#fbf6ef"><rect x="1196" y="216" width="40" height="34" rx="6"/><rect x="1248" y="216" width="40" height="34" rx="6"/></g>
+        <rect x="1300" y="216" width="40" height="34" rx="6" fill="#a5492a"/>
+        <path d="M1480 205 h56 l-6 45 h-44z" fill="#a5492a"/>
+        <g fill="#6f8a55">
+          <ellipse cx="1490" cy="200" rx="22" ry="11" transform="rotate(-30 1490 200)"/>
+          <ellipse cx="1528" cy="198" rx="22" ry="11" transform="rotate(25 1528 198)"/>
+          <ellipse cx="1478" cy="280" rx="16" ry="9" transform="rotate(60 1478 280)"/>
+          <ellipse cx="1470" cy="330" rx="16" ry="9" transform="rotate(100 1470 330)"/>
+          <ellipse cx="1484" cy="378" rx="16" ry="9" transform="rotate(70 1484 378)"/>
+          <ellipse cx="1546" cy="290" rx="16" ry="9" transform="rotate(120 1546 290)"/>
+        </g>
+        <path d="M1480 250 C1462 300 1490 340 1474 400 M1536 250 C1552 280 1540 300 1548 320" stroke="#6f8a55" stroke-width="3" fill="none"/>
+      
+        <!-- El barista -->
+        <g id="e-barista">
+          <path d="M1150 500 Q1150 470 1190 466 L1290 466 Q1330 470 1330 500 L1340 700 L1140 700 Z" fill="#3a2a20"/>
+          <path d="M1185 500 h110 v200 h-110z" fill="#a5492a"/>
+          <path d="M1196 500 L1222 448 M1284 500 L1258 448" stroke="#a5492a" stroke-width="7"/>
+          <rect x="1224" y="400" width="32" height="40" rx="10" fill="#d9a47e"/>
+          <g id="e-cabeza">
+            <circle cx="1182" cy="356" r="12" fill="#d9a47e"/>
+            <circle cx="1298" cy="356" r="12" fill="#d9a47e"/>
+            <circle cx="1240" cy="350" r="58" fill="#e3b48f"/>
+            <path d="M1182 344 C1180 286 1300 282 1298 344 C1286 316 1250 306 1214 318 C1200 322 1190 332 1182 344Z" fill="#3b2618"/>
+            <g class="ojos"><circle cx="1220" cy="352" r="5.5" fill="#2b1d14"/><circle cx="1260" cy="352" r="5.5" fill="#2b1d14"/></g>
+            <path d="M1210 338 q10 -6 20 0 M1250 338 q10 -6 20 0" stroke="#3b2618" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <circle cx="1206" cy="372" r="9" fill="#a5492a" opacity=".22"/>
+            <circle cx="1274" cy="372" r="9" fill="#a5492a" opacity=".22"/>
+            <path d="M1226 370 q14 -8 28 0 q-14 -2 -28 0z" fill="#3b2618"/>
+            <path id="e-boca" d="M1228 382 Q1240 390 1252 382" stroke="#2b1d14" stroke-width="4" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      
+        <!-- La barra -->
+        <rect x="0" y="640" width="1600" height="28" fill="#b07f55"/>
+        <rect x="0" y="668" width="1600" height="232" fill="#8f6243"/>
+        <rect x="0" y="668" width="1600" height="12" fill="#7a523a"/>
+        <text x="1240" y="800" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" font-style="italic" fill="#f1e9dd" opacity=".92">Bruma</text>
+        <text x="1240" y="846" text-anchor="middle" font-family="Inter Tight, system-ui, sans-serif" font-size="22" fill="#f1e9dd" opacity=".75">café de especialidad</text>
+      
+        <!-- Molino -->
+        <g id="e-molino">
+          <path d="M915 330 L995 330 L972 420 L938 420 Z" fill="#e8e0d4"/>
+          <path d="M921 352 L989 352 L972 420 L938 420 Z" fill="#4a2e1c"/>
+          <rect x="943" y="420" width="24" height="22" fill="#2a2420"/>
+          <rect x="905" y="440" width="100" height="105" rx="14" fill="#2a2420"/>
+          <rect x="975" y="540" width="26" height="75" fill="#2a2420"/>
+          <rect x="900" y="612" width="110" height="28" rx="6" fill="#2a2420"/>
+          <rect x="945" y="540" width="20" height="13" fill="#1a1512"/>
+          <g id="e-dial"><circle cx="985" cy="486" r="15" fill="#4a4038"/><rect x="983" y="473" width="4" height="12" rx="2" fill="#f1e9dd"/></g>
+          <g id="e-granos" fill="#5a3620" opacity="0">
+            <circle cx="950" cy="556" r="2.6"/><circle cx="955" cy="560" r="2.6"/><circle cx="960" cy="556" r="2.6"/>
+            <circle cx="952" cy="562" r="2.6"/><circle cx="958" cy="563" r="2.6"/><circle cx="955" cy="555" r="2.6"/>
+          </g>
+        </g>
+      
+        <!-- Máquina de espresso -->
+        <g id="e-maquina">
+          <rect x="1372" y="388" width="34" height="32" rx="6" fill="#fbf6ef"/>
+          <rect x="1418" y="388" width="34" height="32" rx="6" fill="#c9a47a"/>
+          <rect x="1330" y="420" width="235" height="202" rx="18" fill="#cbc3b8"/>
+          <rect x="1330" y="420" width="235" height="28" rx="14" fill="#b7aea3"/>
+          <rect x="1385" y="470" width="50" height="42" rx="6" fill="#8f877c"/>
+          <ellipse cx="1410" cy="514" rx="30" ry="7" fill="#5d564e"/>
+          <circle cx="1522" cy="472" r="17" fill="#f8f2e9"/>
+          <path d="M1522 472 L1531 463" stroke="#2b1d14" stroke-width="3" stroke-linecap="round"/>
+          <path d="M1545 498 L1553 592" stroke="#8f877c" stroke-width="7" stroke-linecap="round"/>
+          <rect x="1355" y="618" width="150" height="16" rx="4" fill="#8f877c"/>
+          <g id="e-chorros" fill="#7a4524">
+            <rect x="1399" y="540" width="6" height="40" rx="3"/>
+            <rect x="1415" y="540" width="6" height="40" rx="3"/>
+          </g>
+        </g>
+      
+        <!-- Portafiltro (origen = centro del borde superior de la canasta) -->
+        <g id="e-porta" transform="translate(1410 516) scale(-1 1)">
+          <path d="M-28 0 h56 l-5 20 q-23 6 -46 0z" fill="#9a9288"/>
+          <rect x="-6" y="20" width="12" height="8" rx="2" fill="#7d766d"/>
+          <ellipse id="e-monte" cx="0" cy="0" rx="25" ry="7" fill="#5a3620"/>
+          <rect x="26" y="3" width="82" height="13" rx="6.5" fill="#2a2420"/>
+        </g>
+      
+        <!-- La taza (origen = centro de la base) -->
+        <g id="e-taza" transform="translate(1240 664) scale(1.9)">
+          <path d="M34 -30 q18 -2 16 12 q-2 12 -18 10" stroke="#efe5d6" stroke-width="7" fill="none"/>
+          <path d="M-34 -40 h68 l-6 34 q-28 10 -56 0z" fill="#efe5d6"/>
+          <ellipse cx="0" cy="-40" rx="34" ry="8" fill="#e2d5c2"/>
+          <ellipse id="e-cafe" cx="0" cy="-40" rx="29" ry="6" fill="#6b3e22"/>
+          <ellipse id="e-latte" cx="0" cy="-40" rx="29" ry="6" fill="#b98457"/>
+          <path id="e-arte" d="M-10 -40 q10 -9 20 0 q-10 9 -20 0z M-4 -40 q4 -4 8 0 q-4 4 -8 0z M10 -40 h8" fill="#fbf6ef" stroke="#fbf6ef" stroke-width="1.5"/>
+        </g>
+        <g id="e-vapor" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" opacity="0">
+          <path class="humo h1" d="M-8 0 c-8 -14 8 -22 0 -36"/>
+          <path class="humo h2" d="M8 -4 c-8 -14 8 -22 0 -36"/>
+        </g>
+      
+        <!-- Jarra de leche (origen = punta del pico) -->
+        <g id="e-jarra" transform="translate(1072 548) scale(1.25)">
+          <path d="M-6 -2 L12 2 L12 12 Z" fill="#8f877c"/>
+          <path d="M8 2 h58 l6 72 h-68z" fill="#8f877c"/><path d="M18 10 h8 l2 56 h-8z" fill="#b9b1a6"/>
+          <path d="M70 18 q22 2 20 22 q-2 18 -18 20" stroke="#6f685f" stroke-width="7" fill="none"/>
+        </g>
+        <path id="e-leche" d="M0 0" stroke="#fbf6ef" stroke-width="6" stroke-linecap="round" fill="none" opacity="0"/>
+      
+        <!-- Brazos (los calcula escena.js) -->
+        <g stroke="#3a2a20" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path id="e-brazo-izq" d="M1165 486 L1130 570 L1150 640"/>
+          <path id="e-brazo-der" d="M1315 486 L1350 560 L1324 618"/>
+        </g>
+        <circle id="e-mano-izq" cx="1150" cy="640" r="16" fill="#e3b48f"/>
+        <circle id="e-mano-der" cx="1324" cy="618" r="16" fill="#e3b48f"/>
+      </svg>
+      <div class="cine-vinheta"></div>
+
+      <div class="momentos">
+        <div class="momento" data-de="0" data-ate="0.3">
+          <div class="papel papel--titulo">
+            <h1>Café recién molido en Palermo&nbsp;Soho</h1>
+            <p>Granos del Huila, tostados en Buenos Aires y preparados a la vista.</p>
+          </div>
+        </div>
+        <div class="momento momento--alto" data-de="0.36" data-ate="0.66">
+          <div class="papel papel--etiqueta">
+            <p>Un espresso que sabe a chocolate y caramelo, con un final de frutos rojos.</p>
+          </div>
+        </div>
+        <div class="momento momento--final" data-de="0.74" data-ate="1">
+          <div class="papel papel--ticket">
+            <p class="ticket-dir">Te esperamos en Gorriti&nbsp;4821.</p>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gorriti+4821,+Palermo,+Buenos+Aires,+Argentina" class="boton" target="_blank" rel="noopener">Cómo llegar<span class="sr"> (abre Google Maps en otra pestaña)</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cine-dica" aria-hidden="true"><span></span>bajá</div>
+    </div>
+  </section>
+
+  <!-- CARTA: la hoja impresa de la carta, que se "imprime" mientras bajás -->
+  <section id="carta" class="carta-sec" data-progreso aria-labelledby="t-carta">
+    <figure class="carta-foto">
+      <img src="assets/img/carta.webp" alt="Flat white con rosetta, un croissant y una tostada de masa madre sobre una tabla de madera" width="1600" height="900" loading="lazy">
+    </figure>
+    <div class="hoja">
+      <div class="hoja-papel">
+        <h2 id="t-carta">La carta</h2>
+        <p class="hoja-nota">Lo que sale de la barra, todos los días.</p>
+
+        <h3>Café</h3>
+        <dl class="items">
+          <div><dt>Espresso doble</dt><dd>Corto e intenso, para tomar en la barra.</dd></div>
+          <div><dt>Flat white</dt><dd>Espresso doble con una capa fina de leche sedosa.</dd></div>
+          <div><dt>Cappuccino</dt><dd>Como el flat white, pero con más espuma.</dd></div>
+          <div><dt>Latte de vainilla</dt><dd>Para los que lo prefieren dulce.</dd></div>
+        </dl>
+
+        <h3>Frío</h3>
+        <dl class="items">
+          <div><dt>Cold brew</dt><dd>Preparado en frío. Lo servimos solo o con hielo.</dd></div>
+        </dl>
+
+        <h3>Para acompañar</h3>
+        <dl class="items">
+          <div><dt>Croissants</dt><dd>Hojaldrados, para mojar en el café.</dd></div>
+          <div><dt>Tostadas de masa madre</dt><dd>Pan de masa madre tostado en el momento.</dd></div>
+          <div><dt>Cookies artesanales</dt><dd>Para la merienda o para llevar.</dd></div>
+        </dl>
+
+        <p class="hoja-pie">Lunes a viernes de 8 a 20 · Sábados y domingos de 9 a 21</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGEN: la etiqueta de la bolsa queda fija mientras pasan los tres pasos -->
+  <section id="origen" class="origen" aria-labelledby="t-origen">
+    <div class="origen-fijo">
+      <div class="bolsa">
+        <img class="bolsa-foto" src="assets/img/origen.webp" alt="Cuenco de terracota con granos de café tostado y una rama con cerezas de café" width="1600" height="900" loading="lazy">
+        <div class="bolsa-etiqueta">
+          <h2 id="t-origen">Del Huila a Palermo</h2>
+          <dl class="ficha">
+            <div><dt>Origen</dt><dd>Huila, Colombia</dd></div>
+            <div><dt>Notas</dt><dd>Chocolate, caramelo, frutos rojos</dd></div>
+            <div><dt>Tostado</dt><dd>En Buenos Aires</dd></div>
+          </dl>
+          <p>Lo tuestan acá, así llega fresco a la barra.</p>
+        </div>
+      </div>
+    </div>
+    <ol class="pasos-lista">
+      <li class="paso" data-progreso>
+        <img src="assets/img/paso-molienda.webp" alt="Molino negro soltando café molido en el portafiltro" width="960" height="1200" loading="lazy">
+        <div class="paso-texto"><h3>Molienda</h3><p>Molemos justo antes de preparar cada taza.</p></div>
+      </li>
+      <li class="paso" data-progreso>
+        <img src="assets/img/paso-extraccion.webp" alt="Dos hilos de espresso cayendo en una taza de cerámica" width="960" height="1200" loading="lazy">
+        <div class="paso-texto"><h3>Extracción</h3><p>El espresso cae despacio, con su crema dorada.</p></div>
+      </li>
+      <li class="paso" data-progreso>
+        <img src="assets/img/paso-leche.webp" alt="Leche vertida desde una jarra que dibuja una rosetta" width="960" height="1200" loading="lazy">
+        <div class="paso-texto"><h3>Leche</h3><p>La texturizamos hasta que queda sedosa, sin espuma de más.</p></div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- EL LUGAR: fotos con su etiqueta, en una tira que se desliza de costado -->
+  <section id="lugar" class="lugar" data-progreso="pasa" aria-labelledby="t-lugar">
+    <div class="lugar-cabeza">
+      <h2 id="t-lugar">Una mesa larga y luz de ventana</h2>
+      <p>Madera natural, plantas y luz suave. Hay mesas compartidas para venir con la compu y rincones más tranquilos para charlar.</p>
+    </div>
+    <div class="tira">
+      <figure class="foto-tag t1">
+        <img src="assets/img/ambiente-1.webp" alt="Mesa larga de madera compartida con plantas colgantes" width="1600" height="1067" loading="lazy">
+        <figcaption><strong>La mesa larga</strong><span>Para trabajar con la compu</span></figcaption>
+      </figure>
+      <figure class="foto-tag t2">
+        <img src="assets/img/ambiente-2.webp" alt="Rincón con banco de madera, almohadones de lino y una planta" width="1600" height="1067" loading="lazy">
+        <figcaption><strong>El rincón</strong><span>Para charlar o leer</span></figcaption>
+      </figure>
+      <figure class="foto-tag t3">
+        <img src="assets/img/paso-molienda.webp" alt="La barra, con el molino junto a la ventana" width="960" height="1200" loading="lazy">
+        <figcaption><strong>La barra</strong><span>Todo se prepara a la vista</span></figcaption>
+      </figure>
+      <figure class="foto-tag t4">
+        <img src="assets/img/horarios.webp" alt="Vapor que sube de una taza de café a contraluz" width="1600" height="900" loading="lazy">
+        <figcaption><strong>La ventana</strong><span>Luz de mañana</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HORARIOS: el cartel colgado de la puerta, que se balancea al scrollear -->
+  <section id="horarios" class="puerta" data-progreso="pasa" aria-labelledby="t-horarios">
+    <div class="cartel-colgado">
+      <span class="hilo" aria-hidden="true"></span>
+      <div class="cartel" data-hamaca>
+        <h2 id="t-horarios">Horarios</h2>
+        <p class="ahora" data-ahora hidden></p>
+        <dl class="dias">
+          <div><dt>Lunes a viernes</dt><dd>8:00 a 20:00</dd></div>
+          <div><dt>Sábados y domingos</dt><dd>9:00 a 21:00</dd></div>
+        </dl>
+      </div>
+    </div>
+    <img class="puerta-foto" src="assets/img/paso-extraccion.webp" alt="" width="960" height="1200" loading="lazy">
+  </section>
+
+  <!-- UBICACIÓN: el mapa a pantalla completa, con la tarjeta de visita encima -->
+  <section id="ubicacion" class="visita" data-progreso aria-labelledby="t-ubicacion">
+    <div class="visita-mapa">
+      <iframe title="Mapa: Gorriti 4821, Palermo Soho, Buenos Aires" src="https://www.google.com/maps?q=Gorriti+4821,+Palermo,+Buenos+Aires,+Argentina&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="tarjeta">
+      <h2 id="t-ubicacion">Cómo llegar</h2>
+      <p class="tarjeta-dir">Gorriti 4821<br>Palermo Soho, Buenos Aires</p>
+      <dl class="tarjeta-horas">
+        <div><dt>Lun a vie</dt><dd>8:00 a 20:00</dd></div>
+        <div><dt>Sáb y dom</dt><dd>9:00 a 21:00</dd></div>
+      </dl>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Gorriti+4821,+Palermo,+Buenos+Aires,+Argentina" class="boton boton--ancho" target="_blank" rel="noopener">Abrir en Google Maps<span class="sr"> (otra pestaña)</span></a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER: el dorso de una postal -->
+<footer class="postal">
+  <div class="postal-papel">
+    <div class="postal-mensaje">
+      <p class="postal-saludo">Nos vemos en la barra.</p>
+      <p>Bruma Café es un proyecto de portfolio. La marca, la dirección, los horarios, el origen del café y los contactos son ficticios. Las imágenes y el video se generaron con IA a modo demostrativo.</p>
+    </div>
+    <div class="postal-datos">
+      <img class="estampilla" src="assets/img/paso-leche.webp" alt="" width="960" height="1200" loading="lazy">
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Gorriti+4821,+Palermo,+Buenos+Aires" target="_blank" rel="noopener">Gorriti 4821, Palermo Soho</a>
+      <a href="mailto:hola@brumacafe.example">hola@brumacafe.example</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram @brumacafe</a>
+      <span>WhatsApp +54 9 11 0000-0000</span>
+    </div>
+    <p class="postal-imprenta">Bruma Café · <span data-ano>2026</span> · Buenos Aires</p>
+  </div>
+</footer>
+
+<a class="whats" target="_blank" rel="noopener" aria-label="WhatsApp (número ficticio)">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3Zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.3-4-.3-.4a10.4 10.4 0 0 1-1.6-5.6C5.5 9.8 10.2 5.2 16 5.2s10.5 4.6 10.5 10.4S21.8 26.1 16 26.1Zm5.8-7.8c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.6-.9-.8-1.6-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4Z"/></svg>
+</a>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+<script src="bruma.js"></script>
+<script src="escena.js"></script>
+</body>
+</html>

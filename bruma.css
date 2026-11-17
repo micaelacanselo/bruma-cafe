@@ -1,0 +1,359 @@
+/* Bruma Café: cada sección es un papel distinto del mostrador.
+   Se carga después de estilo.css (que queda para la apertura con video y lo básico). */
+
+:root {
+  --papel: #fbf6ef;     /* el papel impreso */
+  --kraft: #c9a47a;     /* la bolsa de café */
+  --espresso: #2b1d14;  /* tinta y campo oscuro */
+  --terra: #a5492a;     /* acento: acción y el cartel */
+  --campo-lugar: #e6d7c3;
+  --margen: clamp(16px, 4vw, 56px);
+  --curva: cubic-bezier(.22, 1, .36, 1);
+}
+
+img { height: auto; }
+body { font-size: 17px; }
+p { color: var(--texto); }
+
+/* ── Barra superior: lisa, sin vidrio ─────────────────────────────────── */
+.topo.rolou { background: var(--fundo); backdrop-filter: none; -webkit-backdrop-filter: none; } /* taste-skill-ignore: anula el vidrio de la plantilla */
+.menu-cta { border: 0; background: var(--espresso); color: var(--papel) !important; border-radius: 0; padding: 11px 18px; }
+.menu-cta:hover { background: var(--terra); color: var(--papel) !important; }
+
+/* ── Botón: plano, esquinas rectas, como un sello ─────────────────────── */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px;
+  font: 600 16px/1 var(--fonte-texto); text-decoration: none; letter-spacing: .01em;
+  background: var(--terra); color: var(--papel); border-radius: 0;
+  transition: background-color .2s ease, transform .16s var(--curva);
+}
+.boton:hover { background: var(--espresso); }
+.boton:active { transform: scale(.97); }
+.boton--ancho { width: 100%; }
+
+/* ── Apertura: tres papeles distintos sobre el video ──────────────────── */
+.papel { background: var(--papel); color: var(--espresso); }
+.papel p { margin: 0; }
+.momento { filter: none !important; }
+
+/* 1 · La tarjeta del título: se descubre de abajo hacia arriba */
+.papel--titulo { padding: clamp(24px, 3vw, 40px); max-width: 620px; }
+.papel--titulo h1 { font-size: clamp(38px, 5vw, 76px); font-weight: 400; line-height: 1; letter-spacing: -.025em; margin: 0 0 20px; }
+.papel--titulo p { font-size: 18px; max-width: 34ch; }
+.momento:first-child { transform: none; clip-path: inset(100% 0 0 0); transition: clip-path .9s var(--curva), opacity .3s; }
+.momento:first-child.ativo { clip-path: inset(0 0 0 0); }
+
+/* 2 · La etiqueta de kraft con su agujero: entra girando, como colgada */
+.papel--etiqueta { background: var(--kraft); padding: 26px 32px 26px 64px; max-width: 460px;
+  -webkit-mask: radial-gradient(circle at 30px 50%, #0000 9px, #000 10px); mask: radial-gradient(circle at 30px 50%, #0000 9px, #000 10px); } /* taste-skill-ignore: máscara que recorta la forma del papel */
+.papel--etiqueta p { font: italic 400 clamp(22px, 2.2vw, 32px)/1.2 var(--fonte-titulo); }
+.momento--alto { transform: rotate(-7deg) translateY(-20px); transform-origin: 30px 50%; transition: transform .8s var(--curva), opacity .4s; }
+.momento--alto.ativo { transform: rotate(-2deg); }
+
+/* 3 · El ticket con muescas: sale de costado, como de la impresora */
+.papel--ticket { padding: 28px 40px; display: grid; gap: 18px; justify-items: start;
+  -webkit-mask: radial-gradient(circle at 0 50%, #0000 13px, #000 14px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, #0000 13px, #000 14px) right / 51% 100% no-repeat; /* taste-skill-ignore: máscara que recorta la forma del papel */
+          mask: radial-gradient(circle at 0 50%, #0000 13px, #000 14px) left / 51% 100% no-repeat, radial-gradient(circle at 100% 50%, #0000 13px, #000 14px) right / 51% 100% no-repeat; } /* taste-skill-ignore: máscara que recorta la forma del papel */
+.ticket-dir { font: 400 clamp(26px, 2.6vw, 38px)/1.1 var(--fonte-titulo); }
+.momento--final { transform: translateX(-40px); transition: transform .7s var(--curva), opacity .35s; }
+.momento--final.ativo { transform: none; }
+
+html:not(.js) .momento, .cine.quieta .momento { clip-path: none; transform: none; }
+
+/* ── Carta: campo espresso, foto fija a la izquierda, hoja que se imprime ─ */
+.carta-sec {
+  background: var(--espresso); color: var(--papel);
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px;
+  padding: 160px var(--margen); align-items: start;
+}
+.carta-foto { grid-column: 1 / span 6; margin: 0; position: sticky; top: 120px; overflow: hidden; aspect-ratio: 4 / 5; }
+.carta-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%;
+  transform: scale(calc(1.18 - var(--p, 1) * .18)); transform-origin: 60% 40%; }
+.hoja { grid-column: 8 / span 5; }
+.hoja-papel {
+  --s: 11px;
+  background: var(--papel); color: var(--espresso); padding: 64px clamp(28px, 4vw, 56px);
+  text-align: center;
+  -webkit-mask: radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--s)) 51% repeat-x, /* taste-skill-ignore: máscara que recorta la forma del papel */
+                radial-gradient(var(--s) at 50% 100%, #0000 98%, #000) 50% 100% / calc(2 * var(--s)) 51% repeat-x; /* taste-skill-ignore: máscara que recorta la forma del papel */
+          mask: radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--s)) 51% repeat-x, /* taste-skill-ignore: máscara que recorta la forma del papel */
+                radial-gradient(var(--s) at 50% 100%, #0000 98%, #000) 50% 100% / calc(2 * var(--s)) 51% repeat-x; /* taste-skill-ignore: máscara que recorta la forma del papel */
+}
+.js .hoja { clip-path: inset(0 0 calc((1 - var(--p, 1)) * 100%) 0); }
+.hoja-papel h2 { font-size: clamp(40px, 4vw, 56px); font-weight: 400; margin: 0 0 8px; }
+.hoja-nota { margin: 0 0 48px; color: #5a4636; }
+.hoja-papel h3 { font: italic 400 24px/1.2 var(--fonte-titulo); color: var(--terra); margin: 48px 0 18px; }
+.hoja-papel h3:first-of-type { margin-top: 0; }
+.items { margin: 0; display: grid; gap: 18px; }
+.items dt { font: 600 18px/1.3 var(--fonte-titulo); }
+.items dd { margin: 4px 0 0; font-size: 16px; color: #5a4636; }
+.hoja-pie { margin: 56px 0 0; font-size: 15px; color: #5a4636; }
+
+/* ── Origen: la etiqueta de la bolsa queda fija; los pasos pasan al lado ─ */
+.origen { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 180px var(--margen) 120px; }
+.origen-fijo { grid-column: 1 / span 5; }
+.bolsa { position: sticky; top: 110px; }
+.bolsa-foto { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; mix-blend-mode: multiply; }
+.bolsa-etiqueta {
+  background: var(--kraft); color: var(--espresso); padding: 44px 36px 36px; margin-top: -24px; position: relative;
+  clip-path: polygon(0 14px, 4% 0, 8% 14px, 12% 0, 16% 14px, 20% 0, 24% 14px, 28% 0, 32% 14px, 36% 0, 40% 14px, 44% 0, 48% 14px, 52% 0, 56% 14px, 60% 0, 64% 14px, 68% 0, 72% 14px, 76% 0, 80% 14px, 84% 0, 88% 14px, 92% 0, 96% 14px, 100% 0, 100% 100%, 0 100%);
+}
+.bolsa-etiqueta h2 { font-size: clamp(36px, 3.4vw, 52px); font-weight: 400; margin: 0 0 24px; }
+.ficha { margin: 0 0 22px; display: grid; gap: 10px; }
+.ficha div { display: grid; grid-template-columns: 6.5em 1fr; gap: 12px; }
+.ficha dt { font-weight: 600; }
+.ficha dd { margin: 0; font-family: var(--fonte-titulo); font-size: 19px; }
+.bolsa-etiqueta p { margin: 0; }
+
+.pasos-lista { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; display: grid; gap: 140px; }
+.paso { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: end; }
+.paso img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  clip-path: inset(calc((1 - var(--p, 1)) * 18%) calc((1 - var(--p, 1)) * 18%)); }
+.paso-texto { transform: translateY(calc((1 - var(--p, 1)) * 60px)); opacity: calc(.2 + var(--p, 1) * .8); }
+.paso h3 { font-size: clamp(34px, 3.4vw, 52px); font-weight: 400; margin: 0 0 10px; letter-spacing: -.02em; }
+.paso p { margin: 0; }
+
+/* ── El lugar: campo beige, fotos con etiqueta en una tira que se desliza ─ */
+.lugar { background: var(--campo-lugar); padding: 160px 0; overflow: hidden; }
+.lugar-cabeza { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 0 var(--margen); margin-bottom: 64px; align-items: end; }
+.lugar-cabeza h2 { grid-column: 1 / span 7; font-size: clamp(40px, 5vw, 76px); font-weight: 400; margin: 0; letter-spacing: -.025em; }
+.lugar-cabeza p { grid-column: 9 / span 4; margin: 0; }
+.tira { display: flex; gap: 16px; padding: 0 var(--margen); width: max-content;
+  transform: translateX(calc((.5 - var(--p, .5)) * 40vw)); }
+.foto-tag { margin: 0; width: clamp(260px, 30vw, 440px); display: grid; }
+.foto-tag:nth-child(even) { margin-top: 72px; }
+.foto-tag img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.foto-tag figcaption { padding: 14px 16px; min-height: 84px; display: grid; gap: 2px; align-content: center; font-size: 15px; }
+.foto-tag strong { font: 400 22px/1.2 var(--fonte-titulo); }
+.t1 figcaption { background: var(--espresso); color: var(--papel); }
+.t2 figcaption { background: var(--terra); color: var(--papel); }
+.t3 figcaption { background: var(--kraft); color: var(--espresso); }
+.t4 figcaption { background: var(--papel); color: var(--espresso); }
+
+/* ── Horarios: campo terracota, el cartel colgado que se hamaca ────────── */
+.puerta { background: var(--terra); color: var(--papel); display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; padding: 0 var(--margen) 140px; align-items: start; }
+.cartel-colgado { grid-column: 2 / span 5; display: grid; justify-items: center; }
+.hilo { width: 3px; height: 150px; background: var(--espresso); border-radius: 2px; }
+.cartel { background: var(--papel); color: var(--espresso); padding: 48px 44px 40px; width: 100%; max-width: 480px; border-radius: 20px;
+  transform-origin: 50% -150px; transform: rotate(var(--giro, 0deg)); position: relative; }
+.cartel::before { content: ""; position: absolute; top: 16px; left: 50%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--terra); }
+.cartel h2 { font-size: clamp(40px, 4vw, 60px); font-weight: 400; text-align: center; margin: 8px 0 18px; }
+.ahora { text-align: center; font: italic 400 21px/1.3 var(--fonte-titulo); color: var(--terra); margin: 0 0 26px; }
+.dias { margin: 0; display: grid; gap: 14px; }
+.dias div { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: #f1e9dd; padding: 14px 18px; }
+.dias dd { margin: 0; font: 400 24px/1.1 var(--fonte-titulo); font-variant-numeric: tabular-nums; }
+.puerta-foto { grid-column: 8 / span 5; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; margin-top: 150px;
+  transform: translateY(calc((var(--p, .5) - .5) * -80px)); }
+
+/* ── Ubicación: el mapa entero y la tarjeta de visita encima ──────────── */
+.visita { position: relative; min-height: 100svh; overflow: hidden; background: var(--fundo); }
+.visita-mapa { position: absolute; inset: 0; transform: scale(calc(1.14 - var(--p, 1) * .14)); transform-origin: 70% 50%; }
+.visita-mapa iframe { width: 100%; height: 100%; border: 0; filter: sepia(.3) saturate(.8); }
+.tarjeta { position: relative; z-index: 1; margin: 110px 0 0 var(--margen); width: min(400px, calc(100% - 2 * var(--margen)));
+  background: var(--papel); color: var(--espresso); padding: 32px 32px 0; border-radius: 8px; overflow: hidden; display: grid; }
+.tarjeta h2 { font-size: 40px; font-weight: 400; margin: 0 0 16px; }
+.tarjeta-dir { margin: 0 0 22px; font-size: 18px; }
+.tarjeta-horas { margin: 0 0 28px; display: grid; gap: 8px; }
+.tarjeta-horas div { display: flex; justify-content: space-between; }
+.tarjeta-horas dd { margin: 0; font-variant-numeric: tabular-nums; }
+.tarjeta .boton { margin: 0 -32px; width: calc(100% + 64px); min-height: 58px; }
+
+/* ── Footer: el dorso de una postal ──────────────────────────────────── */
+.postal { background: var(--espresso); padding: 100px var(--margen) 40px; }
+.postal-papel {
+  --s: 26px;
+  max-width: 1240px; margin: 0 auto; background: var(--papel); color: var(--espresso);
+  padding: 72px clamp(24px, 5vw, 64px) 32px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px 64px;
+  -webkit-mask: radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--s)) 100% repeat-x; /* taste-skill-ignore: máscara que recorta la forma del papel */
+          mask: radial-gradient(var(--s) at 50% 0, #0000 98%, #000) 50% 0 / calc(2 * var(--s)) 100% repeat-x; /* taste-skill-ignore: máscara que recorta la forma del papel */
+}
+.postal-saludo { font: italic 400 clamp(30px, 3vw, 40px)/1.1 var(--fonte-titulo); margin: 0 0 16px; }
+.postal-mensaje p:last-child { margin: 0; max-width: 46ch; }
+.postal-datos { display: grid; gap: 12px; align-content: start; font-size: 18px; position: relative; padding-right: 110px; }
+.postal-datos a { text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.postal-datos a:hover { color: var(--terra); }
+.estampilla { position: absolute; top: 0; right: 0; width: 88px; aspect-ratio: 3 / 4; object-fit: cover; padding: 6px; background: #f1e9dd; transform: rotate(3deg); }
+.postal-imprenta { grid-column: 1 / -1; text-align: center; font-size: 14px; margin: 24px 0 0; color: #5a4636; }
+
+/* ── Entradas: cada sección entra a su manera ─────────────────────────── */
+.js [data-entra] { transition: opacity .7s var(--curva), transform .8s var(--curva); transition-delay: calc(var(--i, 0) * 80ms); }
+.js .carta-sec:not(.en) .items > div { opacity: 0; transform: translateY(16px); }
+.js .carta-sec .items > div { transition: opacity .6s var(--curva), transform .7s var(--curva); transition-delay: calc(var(--i, 0) * 70ms + 200ms); }
+.js .lugar:not(.en) .foto-tag { opacity: 0; transform: translateY(48px) rotate(1.5deg); }
+.js .lugar .foto-tag { transition: opacity .7s var(--curva), transform .9s var(--curva); transition-delay: calc(var(--i, 0) * 90ms); }
+.js .visita:not(.en) .tarjeta { opacity: 0; transform: translateY(-28px); }
+.js .visita .tarjeta { transition: opacity .6s var(--curva), transform .8s var(--curva); }
+.js .postal:not(.en) .postal-papel { transform: translateY(60px); }
+.js .postal .postal-papel { transition: transform 1s var(--curva); }
+.js .puerta:not(.en) .cartel-colgado { transform: translateY(-80px); }
+.js .puerta .cartel-colgado { transition: transform 1.1s cubic-bezier(.34, 1.4, .64, 1); }
+
+/* ── Celular: cada sección arma su propia composición ─────────────────── */
+@media (max-width: 860px) {
+  .carta-sec, .origen, .puerta, .lugar-cabeza { grid-template-columns: 1fr; }
+  .carta-sec { padding: 96px 10px; row-gap: 32px; }
+  .carta-foto, .hoja { grid-column: 1; }
+  .carta-foto { position: relative; top: 0; aspect-ratio: 4 / 3; margin: 0 6px; }
+  .hoja-papel { padding: 48px 24px; }
+  .origen { padding: 110px var(--margen) 80px; row-gap: 72px; }
+  .origen-fijo, .pasos-lista { grid-column: 1; }
+  .bolsa { position: relative; top: 0; }
+  .pasos-lista { gap: 72px; }
+  .paso { grid-template-columns: 1fr; gap: 18px; }
+  .lugar { padding: 100px 0; }
+  .lugar-cabeza h2, .lugar-cabeza p { grid-column: 1; }
+  .lugar-cabeza h2 { margin-bottom: 18px; }
+  .tira { transform: none; width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; scrollbar-width: none; }
+  .foto-tag { width: 72vw; flex: none; scroll-snap-align: center; }
+  .foto-tag:nth-child(even) { margin-top: 0; }
+  .puerta { padding-bottom: 96px; row-gap: 48px; }
+  .cartel-colgado, .puerta-foto { grid-column: 1; }
+  .hilo { height: 96px; }
+  .cartel { transform-origin: 50% -96px; padding: 40px 24px 28px; }
+  .puerta-foto { margin-top: 0; aspect-ratio: 4 / 3; }
+  .visita { min-height: 0; display: grid; }
+  .visita-mapa { position: relative; height: 62svh; }
+  .tarjeta { margin: -72px var(--margen) 0; width: auto; }
+  .postal-papel { --s: 18px; grid-template-columns: 1fr; padding-top: 56px; }
+  .postal-datos { font-size: 17px; padding-right: 78px; }
+  .estampilla { width: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hoja, .js .hoja { clip-path: none; }
+  .paso img { clip-path: none; }
+  .paso-texto { transform: none; opacity: 1; }
+  .tira { transform: none; }
+  .momento, .momento--alto, .momento--final { transform: none; clip-path: none; }
+}
+
+/* ── Ajustes tras la inspección ──────────────────────────────────────── */
+.papel--titulo { max-width: 780px; }
+.papel--titulo h1 { font-size: clamp(38px, 4.4vw, 66px); }
+.cine-vinheta { background: radial-gradient(120% 90% at 50% 45%, transparent 60%, rgb(0 0 0 / .28) 100%); } /* taste-skill-ignore: viñeta neutra sobre el video, para leer */
+.cine-dica { text-transform: none; letter-spacing: .02em; font-size: 14px; }
+@media (max-width: 860px) {
+  .paso img { aspect-ratio: 4 / 3; }
+  .tira { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; overflow: visible; padding: 0 var(--margen); }
+  .foto-tag { width: auto; }
+  .foto-tag img { aspect-ratio: 1 / 1; }
+  .foto-tag figcaption { padding: 10px 12px; min-height: 72px; font-size: 14px; }
+  .foto-tag strong { font-size: 18px; }
+}
+.momento:first-child { max-width: 780px; }
+.bolsa-foto { -webkit-mask: radial-gradient(85% 100% at 50% 100%, #000 60%, #0000 100%); mask: radial-gradient(85% 100% at 50% 100%, #000 60%, #0000 100%); } /* taste-skill-ignore: la foto se funde en el papel */
+.foto-tag { overflow: hidden; }
+.foto-tag figcaption { position: relative; z-index: 1; }
+.t1 img, .t2 img { transform: scale(1.4); }
+.puerta { overflow: clip; }
+@media (min-width: 861px) {
+  .puerta { align-items: center; padding-bottom: 120px; }
+  .hilo { height: 240px; }
+  .cartel { transform-origin: 50% -240px; }
+  .puerta-foto { margin-top: 120px; }
+}
+@media (min-width: 861px) { .tarjeta { margin: 110px var(--margen) 110px auto; } .visita { display: grid; } }
+
+/* ── Apertura ilustrada (config.abertura = "ilustracion") ─────────────── */
+.escena { position: absolute; inset: 0; width: 100%; height: 100%; display: none; }
+.cine[data-abertura="ilustracion"] .escena { display: block; }
+.cine[data-abertura="ilustracion"] .cine-canvas,
+.cine[data-abertura="ilustracion"] .arte-poster,
+.cine[data-abertura="ilustracion"] .cine-vinheta { display: none; }
+.cine[data-abertura="ilustracion"] .cine-palco { background: #f1e9dd; }
+.cine[data-abertura="ilustracion"] .papel--titulo { max-width: 580px; }
+.cine[data-abertura="ilustracion"] .momento:first-child { max-width: 580px; }
+/* los textos se apoyan en el papel; sobre la pared crema llevan un tono más para separarse */
+.cine[data-abertura="ilustracion"] .papel--titulo { background: var(--espresso); color: var(--papel); }
+.cine[data-abertura="ilustracion"] .papel--titulo p { color: var(--papel); }
+.cine[data-abertura="ilustracion"] .papel--ticket { background: var(--terra); color: var(--papel); }
+.cine[data-abertura="ilustracion"] .papel--ticket .boton { background: var(--espresso); }
+.cine[data-abertura="ilustracion"] .papel--ticket .boton:hover { background: #4a3426; }
+.ojos { transform-box: fill-box; transform-origin: center; animation: parpadeo 5s infinite; }
+@keyframes parpadeo { 0%, 95%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
+.humo { animation: humo 2.4s cubic-bezier(.23, 1, .32, 1) infinite; }
+.humo.h2 { animation-delay: 1.2s; }
+@keyframes humo { from { transform: translateY(6px); opacity: 0; } 40% { opacity: 1; } to { transform: translateY(-14px); opacity: 0; } }
+@media (max-width: 860px) {
+  .cine[data-abertura="ilustracion"] .momento:first-child { top: 88px; bottom: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .ojos, .humo { animation: none; } }
+
+/* ── Apertura con el barista (video): los textos van a las esquinas libres, nunca sobre él ── */
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento:first-child { top: 15vh; bottom: auto; max-width: 560px; }
+  .cine[data-abertura="video"] .papel--titulo h1 { font-size: clamp(36px, 3.6vw, 56px); }
+  .cine[data-abertura="video"] .momento--alto { left: auto; right: var(--gutter); top: 15vh; max-width: 420px; }
+  .cine[data-abertura="video"] .momento--final { left: auto; right: var(--gutter); max-width: 400px; transform: translateX(40px); }
+  .cine[data-abertura="video"] .momento--final.ativo { transform: none; }
+}
+
+/* ── Apertura con la miniatura: textos en la franja izquierda (café desenfocado), nunca sobre la taza ni el muñequito ── */
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento:first-child { top: 14vh; bottom: auto; max-width: min(400px, 28vw); }
+  .cine[data-abertura="video"] .papel--titulo { padding: 28px; }
+  .cine[data-abertura="video"] .papel--titulo h1 { font-size: clamp(32px, 2.8vw, 46px); }
+  .cine[data-abertura="video"] .papel--titulo p { font-size: 16px; }
+  .cine[data-abertura="video"] .momento--alto { left: var(--gutter); right: auto; top: auto; bottom: 12vh; max-width: min(380px, 27vw); }
+  .cine[data-abertura="video"] .papel--etiqueta p { font-size: clamp(20px, 1.7vw, 26px); }
+  .cine[data-abertura="video"] .momento--final { left: var(--gutter); right: auto; bottom: 12vh; max-width: min(380px, 27vw); transform: translateX(-40px); }
+  .cine[data-abertura="video"] .momento--final.ativo { transform: none; }
+}
+@media (max-width: 860px) {
+  .cine[data-abertura="video"] .momento,
+  .cine[data-abertura="video"] .momento--alto,
+  .cine[data-abertura="video"] .momento--final { top: auto; bottom: 16px; }
+  .cine[data-abertura="video"] .papel--titulo { padding: 18px 20px; }
+  .cine[data-abertura="video"] .papel--titulo h1 { font-size: 28px; margin-bottom: 8px; }
+  .cine[data-abertura="video"] .papel--titulo p { font-size: 15px; }
+}
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento--final, .cine[data-abertura="video"] .momento--alto { max-width: min(360px, 24vw); }
+}
+
+/* ── Título de la apertura sin recuadro: texto grande sobre un velo crema que se funde con la imagen ── */
+.cine[data-abertura="video"] .cine-palco::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+  background: radial-gradient(70% 60% at 0% 0%, rgb(241 233 221 / .92) 0%, rgb(241 233 221 / .6) 45%, rgb(241 233 221 / 0) 100%); /* taste-skill-ignore: velo de lectura sobre la imagen */
+  transition: opacity .6s cubic-bezier(.23, 1, .32, 1);
+}
+.cine[data-abertura="video"] .cine-palco:has(.momento:first-child.ativo)::before { opacity: 1; }
+.cine[data-abertura="video"] .momentos { z-index: 2; }
+.cine[data-abertura="video"] .papel--titulo { background: none; padding: 0; color: var(--espresso); }
+.cine[data-abertura="video"] .papel--titulo h1 { font-weight: 300; letter-spacing: -.03em; line-height: .98; margin-bottom: 18px; }
+.cine[data-abertura="video"] .papel--titulo p { color: var(--espresso); max-width: 30ch; }
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento:first-child { top: 13vh; max-width: min(640px, 46vw); }
+  .cine[data-abertura="video"] .papel--titulo h1 { font-size: clamp(44px, 4.4vw, 72px); }
+  .cine[data-abertura="video"] .papel--titulo p { font-size: 18px; }
+}
+@media (max-width: 860px) {
+  .cine[data-abertura="video"] .cine-palco::before {
+    background: linear-gradient(to top, rgb(241 233 221 / .95) 0%, rgb(241 233 221 / .75) 26%, rgb(241 233 221 / 0) 48%); /* taste-skill-ignore: velo de lectura sobre la imagen */
+  }
+  .cine[data-abertura="video"] .papel--titulo { padding: 0 4px; }
+  .cine[data-abertura="video"] .papel--titulo h1 { font-size: 38px; }
+  .cine[data-abertura="video"] .papel--titulo p { font-size: 16px; }
+}
+.topo { background: var(--fundo); }
+
+/* ── Apertura con la miniatura sobre fondo liso: sin viñeta ni velo, textos a los costados ── */
+.cine[data-abertura="video"] .cine-vinheta,
+.cine[data-abertura="video"] .cine-palco::before { display: none; }
+.cine[data-abertura="video"] .cine-palco { background: #f1e9dd; }
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento--alto,
+  .cine[data-abertura="video"] .momento--final { max-width: min(330px, 21vw); bottom: 14vh; }
+}
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento--alto,
+  .cine[data-abertura="video"] .momento--final { left: auto; right: var(--gutter); top: auto; bottom: 22vh; max-width: min(330px, 22vw); }
+  .cine[data-abertura="video"] .momento--final { transform: translateX(40px); }
+  .cine[data-abertura="video"] .momento--final.ativo { transform: none; }
+}
+@media (min-width: 861px) {
+  .cine[data-abertura="video"] .momento--final { left: var(--gutter); right: auto; bottom: 18vh; max-width: min(340px, 23vw); transform: translateX(-40px); }
+  .cine[data-abertura="video"] .momento--final .ticket-dir { font-size: clamp(22px, 1.9vw, 28px); }
+}
+@media (min-width: 861px) { .cine[data-abertura="video"] .momento--final { max-width: min(290px, 20vw); } }
