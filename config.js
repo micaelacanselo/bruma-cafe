@@ -1,8 +1,8 @@
 window.SITE = {
   nome: "Bruma Café",
 
-  // Apertura: "ilustracion" (el barista dibujado) o "video" (los 180 cuadros del video de IA).
-  abertura: "video",
+  // Apertura: "manos" (molinillo, espresso y leche, 180 cuadros), o "ilustracion" (dibujo SVG). La miniatura quedó en fonte/frames-mini-final.
+  abertura: "manos",
 
   // Número FICTICIO (proyecto de portfolio). Reemplazar por el real: solo dígitos, con código de país.
   whatsapp: {

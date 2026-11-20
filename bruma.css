@@ -357,3 +357,88 @@ html:not(.js) .momento, .cine.quieta .momento { clip-path: none; transform: none
   .cine[data-abertura="video"] .momento--final .ticket-dir { font-size: clamp(22px, 1.9vw, 28px); }
 }
 @media (min-width: 861px) { .cine[data-abertura="video"] .momento--final { max-width: min(290px, 20vw); } }
+
+/* ── Apertura "manos" (2026-11-19): molinillo → espresso → leche, sin personajes.
+   La foto se funde en el crema de la página por abajo; el título se apoya ahí, sin recuadro. ── */
+.cine[data-abertura="manos"] .cine-palco { background: #f1e9dd; }
+.cine[data-abertura="manos"] .cine-vinheta {
+  background:
+    linear-gradient(to top, #f1e9dd 0%, rgb(241 233 221 / .9) 16%, rgb(241 233 221 / .55) 32%, rgb(241 233 221 / 0) 54%),
+    radial-gradient(130% 100% at 60% 40%, transparent 62%, rgb(43 29 20 / .22) 100%); /* taste-skill-ignore: velo de lectura que funde el video con la página */
+}
+.cine[data-abertura="manos"] .momentos { z-index: 2; }
+.cine[data-abertura="manos"] .momento { bottom: 9vh; }
+
+/* 1 · título grande, tipografía suelta */
+.cine[data-abertura="manos"] .papel--titulo { background: none; padding: 0; color: var(--espresso); }
+.cine[data-abertura="manos"] .papel--titulo h1 { font-size: clamp(44px, 5.2vw, 88px); font-weight: 300; letter-spacing: -.035em; line-height: .95; margin: 0 0 18px; text-wrap: balance; }
+.cine[data-abertura="manos"] .papel--titulo p { font-size: 18px; max-width: 38ch; color: #4a3426; }
+.cine[data-abertura="manos"] .momento:first-child { max-width: min(760px, 56vw); }
+
+/* 2 · etiqueta kraft, arriba a la derecha (lejos de la taza) */
+.cine[data-abertura="manos"] .momento--alto { left: auto; right: var(--gutter); top: 18vh; bottom: auto; max-width: min(400px, 30vw); }
+.cine[data-abertura="manos"] .papel--etiqueta { box-shadow: 0 18px 40px rgb(43 29 20 / .18); }
+
+/* 3 · ticket terracota abajo a la izquierda (el latte art queda a la derecha) */
+.cine[data-abertura="manos"] .momento--final { max-width: min(380px, 28vw); transform: translateX(-40px); }
+.cine[data-abertura="manos"] .momento--final.ativo { transform: none; }
+.cine[data-abertura="manos"] .papel--ticket { background: var(--terra); color: var(--papel); }
+.cine[data-abertura="manos"] .papel--ticket .ticket-dir { font: 400 clamp(22px, 1.9vw, 28px)/1.15 var(--fonte-titulo); }
+.cine[data-abertura="manos"] .papel--ticket .boton { background: var(--espresso); }
+.cine[data-abertura="manos"] .papel--ticket .boton:hover { background: #4a3426; }
+
+.cine[data-abertura="manos"] .cine-dica { color: var(--espresso); }
+
+@media (max-width: 860px) {
+  .cine[data-abertura="manos"] .cine-vinheta {
+    background: linear-gradient(to top, #f1e9dd 0%, rgb(241 233 221 / .92) 22%, rgb(241 233 221 / .6) 38%, rgb(241 233 221 / 0) 60%); /* taste-skill-ignore: velo de lectura */
+  }
+  .cine[data-abertura="manos"] .momento,
+  .cine[data-abertura="manos"] .momento:first-child { left: var(--gutter); right: var(--gutter); max-width: none; bottom: 7vh; top: auto; }
+  .cine[data-abertura="manos"] .papel--titulo h1 { font-size: clamp(36px, 10vw, 46px); margin-bottom: 12px; }
+  .cine[data-abertura="manos"] .papel--titulo p { font-size: 16px; }
+  .cine[data-abertura="manos"] .momento--alto { top: 88px; bottom: auto; right: var(--gutter); left: auto; max-width: 300px; }
+  .cine[data-abertura="manos"] .papel--etiqueta { padding: 18px 22px 18px 52px; }
+  .cine[data-abertura="manos"] .papel--etiqueta p { font-size: 20px; }
+  .cine[data-abertura="manos"] .momento--final { right: auto; max-width: 320px; }
+  .cine[data-abertura="manos"] .cine-dica { display: none; }
+}
+/* ajuste tras ver las capturas: el velo solo detrás del texto, la taza queda nítida */
+@media (min-width: 861px) {
+  .cine[data-abertura="manos"] .cine-vinheta {
+    background:
+      linear-gradient(to top, #f1e9dd 0%, rgb(241 233 221 / 0) 18%),
+      radial-gradient(62% 62% at 0% 100%, rgb(241 233 221 / .94) 0%, rgb(241 233 221 / .7) 45%, rgb(241 233 221 / 0) 100%),
+      radial-gradient(130% 100% at 60% 40%, transparent 62%, rgb(43 29 20 / .2) 100%); /* taste-skill-ignore: velo de lectura */
+  }
+}
+.cine[data-abertura="manos"] .papel--ticket .ticket-dir { color: var(--papel); }
+@media (min-width: 861px) {
+  .cine[data-abertura="manos"] .momento:first-child { top: 17vh; bottom: auto; max-width: min(620px, 44vw); }
+}
+@media (min-width: 861px) {
+  .cine[data-abertura="manos"] .cine-palco::before {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+    background: radial-gradient(52% 58% at 6% 22%, rgb(241 233 221 / .9) 0%, rgb(241 233 221 / .7) 42%, rgb(241 233 221 / 0) 100%); /* taste-skill-ignore: velo de lectura del título */
+    transition: opacity .6s cubic-bezier(.23, 1, .32, 1);
+  }
+  .cine[data-abertura="manos"] .cine-palco:has(.momento:first-child.ativo)::before { opacity: 1; }
+}
+@media (max-width: 860px) {
+  /* el velo fuerte solo mientras se lee el título; después la taza queda limpia */
+  .cine[data-abertura="manos"] .cine-vinheta { background: linear-gradient(to top, #f1e9dd 0%, rgb(241 233 221 / 0) 16%); } /* taste-skill-ignore: fundido con la página */
+  .cine[data-abertura="manos"] .cine-palco::before {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0;
+    background: linear-gradient(to top, #f1e9dd 0%, rgb(241 233 221 / .92) 22%, rgb(241 233 221 / .6) 38%, rgb(241 233 221 / 0) 58%); /* taste-skill-ignore: velo de lectura */
+    transition: opacity .6s cubic-bezier(.23, 1, .32, 1);
+  }
+  .cine[data-abertura="manos"] .cine-palco:has(.momento:first-child.ativo)::before { opacity: 1; }
+  /* ticket arriba: la taza con el dibujo de leche queda abajo, a la vista */
+  .cine[data-abertura="manos"] .momento--final { top: 96px; bottom: auto; }
+}
+/* fundido hacia la carta (fondo espresso), sin corte */
+.cine[data-abertura="manos"] .cine-vinheta {
+  background:
+    linear-gradient(to top, var(--espresso) 0%, rgb(43 29 20 / .55) 7%, rgb(43 29 20 / 0) 20%),
+    radial-gradient(130% 100% at 60% 40%, transparent 62%, rgb(43 29 20 / .2) 100%); /* taste-skill-ignore: fundido con la sección siguiente */
+}

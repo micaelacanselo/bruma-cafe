@@ -8,7 +8,7 @@
   const cine = document.querySelector(".cine");
   const svg = cine && cine.querySelector(".escena");
   if (!cine || !svg) return;
-  if (S.abertura !== "ilustracion") { cine.dataset.abertura = "video"; return; }
+  if (S.abertura !== "ilustracion") { cine.dataset.abertura = S.abertura || "manos"; return; }
 
   const reducir = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const $ = (id) => svg.getElementById(id);
